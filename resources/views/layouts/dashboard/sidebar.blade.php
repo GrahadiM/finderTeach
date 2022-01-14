@@ -103,10 +103,17 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Request::is('teacher-jadwal*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('teacher-jadwal*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('teacher-jadwal.index') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Murid</span>
+            </a>
+        </li> --}}
+
+        <li class="nav-item {{ Request::is('teacher-order*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('teacher-order.index') }}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Data Pesanan</span>
             </a>
         </li>
 

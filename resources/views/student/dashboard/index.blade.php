@@ -18,7 +18,9 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 {{ __('Data Guru') }}
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $teacher->count() }}
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -33,9 +35,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                {{ __('Data Kursus') }}
+                                {{ __('Data Pesanan') }}
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $order->count() }}
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

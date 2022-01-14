@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('teacher-student', App\Http\Controllers\Teacher\StudentController::class);
             Route::resource('teacher-category', App\Http\Controllers\Teacher\CategoryController::class);
             Route::resource('teacher-course', App\Http\Controllers\Teacher\CourseController::class);
-            Route::resource('teacher-jadwal', App\Http\Controllers\Teacher\ScheduleController::class);
+            Route::resource('teacher-order', App\Http\Controllers\Teacher\OrderClass::class);
             Route::resource('teacher-riwayat', App\Http\Controllers\Teacher\RiwayatController::class);
             Route::resource('teacher-perestasi', App\Http\Controllers\Teacher\PerestasiController::class);
         });

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderClass;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentDashboardController extends Controller
 {
@@ -14,7 +17,9 @@ class StudentDashboardController extends Controller
      */
     public function index()
     {
-        return view('student.dashboard.index');
+        $teacher = User::where('role', 'teacher')->get();
+        $order = OrderClass::all();
+        return view('student.dashboard.index', compact('teacher', 'order'));
     }
 
     /**

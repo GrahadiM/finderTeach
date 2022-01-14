@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrderClass as ModelsOrderClass;
@@ -16,8 +16,8 @@ class OrderClass extends Controller
      */
     public function index()
     {
-        $key = ModelsOrderClass::where('student_id', Auth::user()->id)->get();
-        return view('student.order.index', compact('key'));
+        $key = ModelsOrderClass::where('teacher_id', Auth::user()->id)->get();
+        return view('teacher.order.index', compact('key'));
     }
 
     /**
@@ -72,7 +72,13 @@ class OrderClass extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+        ]);
+        ModelsOrderClass::findOrFail($id)->update([
+            'status' => $request->status,
+        ]);
+        return back()->with('success', 'Data di ubah!');
     }
 
     /**
