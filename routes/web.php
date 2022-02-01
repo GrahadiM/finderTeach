@@ -9,6 +9,7 @@ Route::get('/about', [App\Http\Controllers\FrontendController::class, 'about'])-
 Route::get('/category', [App\Http\Controllers\FrontendController::class, 'category'])->name('frontend.category');
 Route::get('/course', [App\Http\Controllers\FrontendController::class, 'course'])->name('frontend.course');
 Route::get('/course/{id}', [App\Http\Controllers\FrontendController::class, 'courseId'])->name('frontend.courseId');
+Route::get('/course/teacher/{id}', [App\Http\Controllers\FrontendController::class, 'courseTeacherId'])->name('frontend.courseTeacherId');
 Route::get('/teacher', [App\Http\Controllers\FrontendController::class, 'teacher'])->name('frontend.teacher');
 Route::get('/teacher/{id}', [App\Http\Controllers\FrontendController::class, 'teacherId'])->name('frontend.teacherId');
 Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact'])->name('frontend.contact');
@@ -40,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('teacher-student', App\Http\Controllers\Teacher\StudentController::class);
             Route::resource('teacher-category', App\Http\Controllers\Teacher\CategoryController::class);
             Route::resource('teacher-course', App\Http\Controllers\Teacher\CourseController::class);
+            Route::resource('teacher-class', App\Http\Controllers\Teacher\MateriController::class);
             Route::resource('teacher-order', App\Http\Controllers\Teacher\OrderClass::class);
             Route::resource('teacher-riwayat', App\Http\Controllers\Teacher\RiwayatController::class);
             Route::resource('teacher-perestasi', App\Http\Controllers\Teacher\PerestasiController::class);
@@ -48,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['student'])->group(function () {
             Route::resource('student-dashboard', App\Http\Controllers\Student\StudentDashboardController::class);
             Route::resource('student-order', App\Http\Controllers\Student\OrderClass::class);
+            Route::resource('student-class', App\Http\Controllers\Student\MateriController::class);
         });
 
         Route::get('/logout', function(Request $request) {

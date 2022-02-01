@@ -43,7 +43,7 @@
                                                         @csrf
                                                         <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a>
                                                         <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-primary btn-sm mb-1"><i class="fas fa-pencil-alt fa-fw"></i></i></a>
-                                                        <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Do you want to delete this data?')"><i class="fas fa-trash"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Apa anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -34,12 +34,30 @@ class FrontendController extends Controller
     public function course()
     {
         $classrooms = Course::orderBy('created_at', 'asc')->get();
+        // foreach ($classrooms as $item) {
+        //     $awal  = $item->time_start;
+        //     $akhir = $item->time_end;
+        //     $diff  = $akhir - $awal;
+
+        //     $jam   = floor($diff / (60 * 60));
+        //     $menit = $diff - ( $jam * (60 * 60) );
+        //     $detik = $diff % 60;
+
+        //     $durasi = 'Waktu tinggal: ' . $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit, ' . $detik . ' detik';
+        //     dd($durasi);
+        // }
         return view('frontend.course', compact('classrooms'));
     }
 
     public function courseId($id)
     {
         $classrooms = Course::where('category_id', $id)->orderBy('created_at', 'asc')->get();
+        return view('frontend.courseId', compact('classrooms'));
+    }
+
+    public function courseTeacherId($id)
+    {
+        $classrooms = Course::where('teacher_id', $id)->orderBy('created_at', 'asc')->get();
         return view('frontend.courseId', compact('classrooms'));
     }
 
@@ -64,22 +82,38 @@ class FrontendController extends Controller
 
     public function pesan($id)
     {
-        $teacher = User::find($id);
-        return view('frontend.pesan', compact('teacher'));
+        $course = Course::find($id);
+        return view('frontend.pesan', compact('course'));
     }
 
     public function pesanpost(Request $request)
     {
         $request->validate([
-            'teacher_id' => 'required',
-            'message' => ['required', 'string',],
+            'course_id' => 'required',
+            'message' => 'required',
+            'bukti_tf' => 'nullable|image|mimes:jpg,png,jpeg|max:2000',
         ]);
-        OrderClass::create([
-            'teacher_id' => $request->teacher_id,
-            'student_id' => Auth::user()->id,
-            'message' => $request->message,
-            'status' => 'non_active',
-        ]);
-        return back()->with('success', 'Data di tambah!');
+        // dd($request->all());
+        
+        if($request->hasFile('bukti_tf')){
+            // $bukti_tf = $this->uploadGambar($request->bukti_tf);
+            $file = $request->file('bukti_tf');
+            $filenameOri = $file->getClientOriginalName();
+            // $bukti_tf = time() . "-" . $filenameOri;
+            $bukti_tf = Auth::user()->id . "-" . $filenameOri;
+
+            $file->move('images/bukti_tf', $bukti_tf);
+
+            OrderClass::create([
+                'course_id' => $request->course_id,
+                'student_id' => Auth::user()->id,
+                'bukti_tf' => $bukti_tf,
+                'message' => $request->message,
+                'status' => 'non_active',
+            ]);
+            return redirect()->route('student-dashboard.index')->with('success', 'Selamat, Orderan Anda Berhasil!');
+        } else {
+            return back()->with('error', 'Mohon maaf, Orderan Anda Gagal!!!');
+        }
     }
 }

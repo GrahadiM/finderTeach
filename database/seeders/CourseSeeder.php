@@ -18,10 +18,22 @@ class CourseSeeder extends Seeder
         \App\Models\Course::create([
             'teacher_id' => 2,
             'category_id' => 1,
+            'name' => 'Algoritma Dasar',
             'day' => 'Sabtu, Minggu',
             'time_start' => '10:00:00',
             'time_end' => '12:00:00',
             'price' => 100000,
+            'status' => 'active',
+        ]);
+
+        \App\Models\Course::create([
+            'teacher_id' => 2,
+            'category_id' => 1,
+            'name' => 'Trigonometri',
+            'day' => 'Jumat',
+            'time_start' => '13:00:00',
+            'time_end' => '14:00:00',
+            'price' => 50000,
             'status' => 'active',
         ]);
     }

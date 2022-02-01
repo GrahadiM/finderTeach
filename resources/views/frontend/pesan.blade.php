@@ -13,13 +13,25 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-form bg-secondary rounded p-5">
-                        <form action="{{ route('frontend.pesan.post') }}" novalidate="novalidate" method="post">
+                        <form action="{{ route('frontend.pesan.post') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="control-group">
-                                <input type="hidden" class="form-control border-0 p-4" id="teacher" name="teacher_id" value="{{ $teacher->id }}" placeholder="Your Teacher" required="required" />
+                            <div class="control-group mt-3">
+                                <input type="hidden" class="form-control border-0 p-4" id="course_id" name="course_id" value="{{ $course->id }}" placeholder="Your Course" required="required" />
                             </div>
-                            <div class="control-group">
+                            <div class="control-group mt-3">
+                                <input type="hidden" class="form-control border-0 p-4" id="teacher" name="teacher_id" value="{{ $course->teacher->id }}" placeholder="Your Teacher" required="required" />
+                            </div>
+                            <div class="control-group mt-3">
+                                <input type="text" class="form-control border-0 p-4" id="course" name="" value="{{ $course->name }}" placeholder="Your Course" required="required" />
+                            </div>
+                            <div class="control-group mt-3">
+                                <input type="text" class="form-control border-0 p-4" id="teacher" name="" value="{{ $course->teacher->name }}" placeholder="Your Teacher" required="required" />
+                            </div>
+                            <div class="control-group mt-3">
+                                <input type="file" class="form-control border-0" id="bukti_tf" name="bukti_tf" placeholder="Your File" required="required" />
+                            </div>
+                            <div class="control-group mt-3">
                                 <input type="text" class="form-control border-0 p-4" id="message" name="message" placeholder="Your Message" required="required" />
                             </div>
                             <div class="text-center mt-3">

@@ -22,74 +22,54 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Nama Guru</th>
+                                            <th>Kelas</th>
                                             <th>Pesan</th>
+                                            <th>Pembayaran</th>
                                             <th>Status</th>
                                             <th>Tgl Pemesanan</th>
-                                            <th>Handle</th>
+                                            {{-- <th>Handle</th> --}}
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
                                             <th>Nama Guru</th>
+                                            <th>Kelas</th>
                                             <th>Pesan</th>
+                                            <th>Pembayaran</th>
                                             <th>Status</th>
                                             <th>Tgl Pemesanan</th>
-                                            <th>Handle</th>
+                                            {{-- <th>Handle</th> --}}
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($key as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->teacher->name }}</td>
+                                                <td>{{ $data->course->teacher->name }}</td>
+                                                <td>{{ $data->course->name }}</td>
                                                 <td>{{ $data->message }}</td>
-                                                <td>{{ $data->status }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
                                                 <td>
+                                                    @if ($data->bukti_tf != null)
+                                                        <img src="{{ asset('images/bukti_tf/'.$data->bukti_tf) }}" alt="bukti_tf" width="100" srcset="">
+                                                    @else
+                                                        Belum Bayar
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <button href="{{ route('admin-student.edit', $data->id) }}" class="btn btn-sm @if ($data->status == 'active') btn-success @elseif($data->status == 'pending') btn-warning @else btn-danger @endif" disable>{{ ucfirst($data->status) }}</button>
+                                                </td>
+                                                <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
+                                                {{-- <td>
                                                     <form action="{{ route('student-order.destroy', $data->id) }}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
                                                         <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a>
-                                                        {{-- <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-primary btn-sm mb-1"><i class="fas fa-pencil-alt fa-fw"></i></i></a> --}}
-                                                        <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Do you want to delete this data?')"><i class="fas fa-trash"></i></button>
+                                                        <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-primary btn-sm mb-1"><i class="fas fa-pencil-alt fa-fw"></i></i></a>
+                                                        <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Apa anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button>
                                                     </form>
-                                                </td>
+                                                </td> --}}
                                             </tr>
-                                            
-                                            <!-- form edit -->
-                                            <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content col-lg-8 mx-auto">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="mediumModalLabel">Edit Data</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="{{ route('student-order.update',$data->id) }}" method="post" enctype="multipart/form-data">
-                                                                @method('PUT')
-                                                                @csrf
-
-                                                                <div class="form-group">
-                                                                    <h5>Pesan</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="message" value="{{ $data->message }}" required>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary" name="submit">Add</button>
-                                                                </div>
-                                                                
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end form edit -->
 
                                             <!-- form view -->
                                             <div class="modal fade" id="show{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
@@ -129,39 +109,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- form input -->
-                    <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content col-lg-8 mx-auto">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="mediumModalLabel">Create Data</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('student-order.store') }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        
-                                        <div class="form-group">
-                                            <h5>Pesan</h5>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="-- Input Data --" name="message" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary" name="submit">Add</button>
-                                        </div>
-                                        
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end form input -->
                     
 @endsection
 

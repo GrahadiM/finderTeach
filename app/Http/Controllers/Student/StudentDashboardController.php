@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Materi;
 use App\Models\OrderClass;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,8 +20,16 @@ class StudentDashboardController extends Controller
     public function index()
     {
         $teacher = User::where('role', 'teacher')->get();
-        $order = OrderClass::all();
-        return view('student.dashboard.index', compact('teacher', 'order'));
+        $orders = OrderClass::where('student_id', auth()->user()->id)->get();
+        $class = Materi::all();
+        $courses = Course::all();
+        foreach ($courses as $course) {   
+            $orderan = OrderClass::where('student_id', auth()->user()->id)->where('course_id', $course->id)->get();
+            foreach ($orderan as $order) {   
+                $kelas = Materi::where('course_id', $order->course->id)->get();
+            }
+        }
+        return view('student.dashboard.index', compact('teacher', 'orders', 'kelas', 'class', 'courses'));
     }
 
     /**

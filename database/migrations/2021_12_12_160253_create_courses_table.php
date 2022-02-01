@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->bigInteger('teacher_id');
             $table->bigInteger('category_id');
+            $table->string('name');
             $table->string('day')->nullable();
             $table->time('time_start')->nullable();
             $table->time('time_end')->nullable();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderClassesTable extends Migration
+class CreateMaterisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateOrderClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_classes', function (Blueprint $table) {
+        Schema::create('materis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('student_id');
             $table->bigInteger('course_id');
-            $table->string('message');
-            $table->string('bukti_tf');
-            $table->string('status');
+            $table->string('materi_file')->nullable();
+            $table->string('materi_gambar')->nullable();
+            $table->string('materi_video')->nullable();
+            $table->string('materi_text')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateOrderClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_classes');
+        Schema::dropIfExists('materis');
     }
 }

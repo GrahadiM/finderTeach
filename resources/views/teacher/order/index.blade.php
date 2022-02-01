@@ -25,7 +25,7 @@
                                             <th>Pesan</th>
                                             <th>Status</th>
                                             <th>Tgl Pemesanan</th>
-                                            <th>Handle</th>
+                                            {{-- <th>Handle</th> --}}
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -35,26 +35,28 @@
                                             <th>Pesan</th>
                                             <th>Status</th>
                                             <th>Tgl Pemesanan</th>
-                                            <th>Handle</th>
+                                            {{-- <th>Handle</th> --}}
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($key as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->teacher->name }}</td>
+                                                <td>{{ $data->course->teacher->name }}</td>
                                                 <td>{{ $data->message }}</td>
-                                                <td>{{ $data->status }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
                                                 <td>
+                                                    <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-sm @if ($data->status == 'active') btn-success @elseif($data->status == 'pending') btn-warning @else btn-danger @endif">{{ ucfirst($data->status) }}</a>
+                                                </td>
+                                                <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
+                                                {{-- <td>
                                                     <form action="{{ route('teacher-order.destroy', $data->id) }}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
-                                                        {{-- <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a> --}}
+                                                        <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a>
                                                         <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-primary btn-sm mb-1"><i class="fas fa-pencil-alt fa-fw"></i></i></a>
-                                                        {{-- <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Do you want to delete this data?')"><i class="fas fa-trash"></i></button> --}}
+                                                        <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Apa anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button>
                                                     </form>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                             
                                             <!-- form edit -->

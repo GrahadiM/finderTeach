@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\OrderClass as ModelsOrderClass;
+use App\Models\Materi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class OrderClass extends Controller
+class MateriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class OrderClass extends Controller
      */
     public function index()
     {
-        // $key = ModelsOrderClass::where('teacher_id', Auth::user()->id)->get();
-        $key = ModelsOrderClass::all();
-        return view('teacher.order.index', compact('key'));
+        //
     }
 
     /**
@@ -45,10 +41,10 @@ class OrderClass extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Materi $materi)
     {
         //
     }
@@ -56,10 +52,10 @@ class OrderClass extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Materi $materi)
     {
         //
     }
@@ -68,27 +64,21 @@ class OrderClass extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Materi $materi)
     {
-        $request->validate([
-            'status' => 'required',
-        ]);
-        ModelsOrderClass::findOrFail($id)->update([
-            'status' => $request->status,
-        ]);
-        return back()->with('success', 'Data di ubah!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Materi $materi)
     {
         //
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Materi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,7 +69,10 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $key = Materi::where('course_id', $id)->get();
+        $course = Course::find($id);
+        // dd($course);
+        return view('teacher.course.show', compact('key', 'course'));
     }
 
     /**

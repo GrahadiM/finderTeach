@@ -105,7 +105,7 @@
                                                         @if ($data->phone != null)
                                                         <a href="https://wa.me/{{ $data->phone }}" target="_blank" class="btn btn-sm btn-success mb-1"><i class="fab fa-whatsapp"></i></a>
                                                         @endif
-                                                        {{-- <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Do you want to delete this data?')"><i class="fas fa-trash"></i></button> --}}
+                                                        {{-- <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Apa anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button> --}}
                                                     </form>
                                                 </td>
                                             </tr>

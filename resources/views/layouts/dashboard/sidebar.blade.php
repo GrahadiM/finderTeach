@@ -162,7 +162,14 @@
         <li class="nav-item {{ Request::is('student-order*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('student-order.index') }}">
                 <i class="fas fa-fw fa-clipboard-list"></i>
-                <span>Data Pesanan</span>
+                <span>Riwayat Pesanan</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Request::is('student-class*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('student-class.index') }}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Data Kelas</span>
             </a>
         </li>
 

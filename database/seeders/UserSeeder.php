@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Abdurrahman GM',
             'role' => 'teacher',
-            'status' => 'non-active',
+            'status' => 'active',
             'phone' => '085767113554',
             'address' => 'Jakarta Timur',
             'avatar' => 'teacher.png',
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Hadoy',
             'role' => 'student',
-            'status' => 'non-active',
+            'status' => 'active',
             'phone' => '085767113554',
             'address' => 'Jakarta Timur',
             'avatar' => 'student.png',

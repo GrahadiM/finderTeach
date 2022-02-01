@@ -22,52 +22,45 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Judul</th>
-                                            <th>Kategori</th>
-                                            <th>Hari</th>
-                                            <th>Jam Belajar</th>
-                                            <th>Harga</th>
-                                            {{-- <th>Status</th> --}}
+                                            {{-- <th>Materi File</th> --}}
+                                            <th>Materi Gambar</th>
+                                            <th>Materi Tertulis</th>
+                                            <th>Tgl Upload</th>
                                             <th>Handle</th>
-                                            <th>Lihat Materi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
                                             <th>Judul</th>
-                                            <th>Kategori</th>
-                                            <th>Hari</th>
-                                            <th>Jam Belajar</th>
-                                            <th>Harga</th>
-                                            {{-- <th>Status</th> --}}
+                                            {{-- <th>Materi File</th> --}}
+                                            <th>Materi Gambar</th>
+                                            <th>Materi Tertulis</th>
+                                            <th>Tgl Upload</th>
                                             <th>Handle</th>
-                                            <th>Lihat Materi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($key as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->name }}</td>
-                                                <td>{{ $data->category->name }}</td>
-                                                <td>{{ $data->day }}</td>
-                                                <td>{{ $data->time_start." - ".$data->time_end }}</td>
-                                                <td>{{ "Rp.".$data->price }}</td>
-                                                {{-- <td>
-                                                    <a href="{{ route('teacher-course.edit', $data->id) }}" class="btn btn-sm @if ($data->status == 'active') btn-success @elseif($data->status == 'archive') btn-warning @else btn-danger @endif">{{ ucfirst($data->status) }}</a>
-                                                </td> --}}
+                                                <td>{{ $data->course->name }}</td>
                                                 <td>
-                                                    <form action="{{ route('teacher-course.destroy', $data->id) }}" method="POST">
+                                                    <a href="{{ asset('images/materi_gambar/'.$data->materi_gambar) }}" target="_blank" rel="noopener noreferrer">
+                                                        <img src="{{ asset('images/materi_gambar/'.$data->materi_gambar) }}" alt="materi" width="100px">
+                                                    </a>
+                                                </td>
+                                                {{-- <td>{{ $data->materi_file }}</td>
+                                                <td>{{ $data->materi_video }}</td> --}}
+                                                <td>{{ $data->materi_text }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
+                                                <td>
+                                                    <form action="{{ route('teacher-class.destroy', $data->id) }}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a>
+                                                        {{-- <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a> --}}
                                                         <a href="#" data-toggle='modal' data-target='#edit{{ $data->id }}' class="btn btn-primary btn-sm mb-1"><i class="fas fa-pencil-alt fa-fw"></i></i></a>
                                                         <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Apa anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action="" method="post">
-                                                        <a href="{{ route('teacher-course.show', $data->id) }}" class="btn btn-sm btn-success mb-1" onclick="return confirm('Apa anda ingin melihat list materi?')">Lihat Materi</a>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -83,60 +76,34 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('teacher-course.update',$data->id) }}" method="post" enctype="multipart/form-data">
+                                                            <form action="{{ route('teacher-class.update',$data->id) }}" method="post" enctype="multipart/form-data">
                                                                 @method('PUT')
                                                                 @csrf
 
-                                                                <div class="form-group">
-                                                                    <h5>Judul</h5>
+                                                                {{-- <div class="form-group">
+                                                                    <h5>Materi File</h5>
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="name" value="{{ $data->name }}" required>
+                                                                        <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_file" value="{{ $data->materi_file }}" required>
                                                                     </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <h5>Kategori</h5>
-                                                                    <select class="form-control" name="category_id" required>
-                                                                        <option value="{{ $data->category->id }}" selected>{{ $data->category->name }}</option>
-                                                                        @foreach ($category as $item)
-                                                                        @if ($item->id != $data->category->id)
-                                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                                        @endif
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <h5>Hari</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="day" value="{{ $data->day }}" required>
-                                                                    </div>
-                                                                </div>
+                                                                </div> --}}
                                                                 
                                                                 <div class="form-group">
-                                                                    <h5>Jam Mulai</h5>
+                                                                    <h5>Materi Gambar</h5>
                                                                     <div class="input-group">
-                                                                        <input type="time" class="form-control" placeholder="-- Input Data --" name="time_start" value="{{ $data->time_start }}" required>
+                                                                        <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_gambar" value="{{ $data->materi_gambar }}">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <h5>Jam Selesai</h5>
+                                                                    <h5>Materi Text</h5>
                                                                     <div class="input-group">
-                                                                        <input type="time" class="form-control" placeholder="-- Input Data --" name="time_end" value="{{ $data->time_end }}" required>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="form-group">
-                                                                    <h5>Harga</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="number" min="0" class="form-control" placeholder="-- Input Data --" name="price" value="{{ $data->price }}" required>
+                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="materi_text" value="{{ $data->materi_text }}" required>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                                                                    <button type="submit" class="btn btn-primary">Add</button>
                                                                 </div>
                                                                 
                                                             </form>
@@ -160,38 +127,24 @@
                                                             <form action="" method="post" enctype="multipart/form-data">
                                                                 @csrf
 
-                                                                <div class="form-group">
-                                                                    <h5>Judul</h5>
+                                                                {{-- <div class="form-group">
+                                                                    <h5>Materi File</h5>
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="name" value="{{ $data->name }}" required>
+                                                                        <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_file" value="{{ $data->materi_file }}" required>
+                                                                    </div>
+                                                                </div> --}}
+                                                                
+                                                                <div class="form-group">
+                                                                    <h5>Materi Gambar</h5>
+                                                                    <div class="input-group">
+                                                                        <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_gambar" value="{{ $data->materi_gambar }}">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                    <h5>Kategori</h5>
+                                                                    <h5>Materi Text</h5>
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="category_id" value="{{ $data->category->name }}" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <h5>Hari</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="day" value="{{ $data->day }}" required>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="form-group">
-                                                                    <h5>Jam</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="time_start" value="{{ $data->time_start." - ".$data->time_end }}" required>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="form-group">
-                                                                    <h5>Harga</h5>
-                                                                    <div class="input-group">
-                                                                        <input type="number" min="0" class="form-control" placeholder="-- Input Data --" name="price" value="{{ $data->price }}" required>
+                                                                        <input type="text" class="form-control" placeholder="-- Input Data --" name="materi_text" value="{{ $data->materi_text }}" required>
                                                                     </div>
                                                                 </div>
                                                                 
@@ -224,57 +177,35 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('teacher-course.store') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('teacher-class.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         
-                                        <div class="form-group">
-                                            <h5>Judul</h5>
+                                        <input type="hidden" class="form-control" placeholder="-- Input Data --" name="course_id" value="{{ $course->id }}">
+                                        
+                                        {{-- <div class="form-group">
+                                            <h5>Materi File</h5>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="-- Input Data --" name="name" required>
+                                                <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_file" required>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <h5>Kategori</h5>
-                                            <select class="form-control" name="category_id" required>
-                                                <option value="" aria-required="required" selected>-- Input Data --</option>
-                                                @foreach ($category as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <h5>Hari</h5>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="-- Input Data --" name="day" value="Sabtu, Minggu" required>
-                                            </div>
-                                        </div>
+                                        </div> --}}
                                         
                                         <div class="form-group">
-                                            <h5>Jam Mulai</h5>
+                                            <h5>Materi Gambar</h5>
                                             <div class="input-group">
-                                                <input type="time" class="form-control" placeholder="-- Input Data --" name="time_start" required>
+                                                <input type="file" class="form-control" placeholder="-- Input Data --" name="materi_gambar">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <h5>Jam Selesai</h5>
+                                            <h5>Materi Text</h5>
                                             <div class="input-group">
-                                                <input type="time" class="form-control" placeholder="-- Input Data --" name="time_end" required>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <h5>Harga</h5>
-                                            <div class="input-group">
-                                                <input type="number" min="0" class="form-control" placeholder="-- Input Data --" name="price" required>
+                                                <input type="text" class="form-control" placeholder="-- Input Data --" name="materi_text" required>
                                             </div>
                                         </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
                                         
                                     </form>

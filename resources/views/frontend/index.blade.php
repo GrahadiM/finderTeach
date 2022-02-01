@@ -58,7 +58,7 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
                         <img class="img-fluid" src="{{ asset('images/categories') }}/{{ $category->thumbnail }}" alt="thumbnail">
-                        <a class="cat-overlay text-white text-decoration-none" href="{{ route('frontend.courseId', $category->id) }}">
+                        <a class="cat-overlay text-white text-decoration-none" href="{{ route('frontend.teacherId', $category->id) }}">
                             <h4 class="text-white font-weight-medium">{{ $category->name }}</h4>
                             {{-- <span>
                                 @foreach ($classrooms as $course)
@@ -75,7 +75,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-5">
-                <a class="text-decoration-none" href="{{ route('frontend.course') }}">
+                <a class="text-decoration-none" href="{{ route('frontend.category') }}">
                     <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">SEE ALL</h5>
                 </a>
             </div>
@@ -269,7 +269,8 @@
                         <div class="team-img position-relative">
                             <img class="img-fluid" src="{{ asset('images/avatar') }}/{{ $teacher->avatar }}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fas fa-address-card"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="{{ route('frontend.pesan', $teacher->id) }}"><i class="fas fa-address-card"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="https://api.whatsapp.com/send?phone={{ $teacher->phone }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                 {{-- <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a> --}}

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderClass extends Model
+class Materi extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    protected $table = 'order_classes';
+    protected $table = 'materis';
     
     public function student(){
         return $this->belongsTo('App\Models\User');
