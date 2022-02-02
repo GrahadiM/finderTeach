@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
-@section('title','Data Kelas')
-@section('content_title','Data Kelas')
+@section('title','Data Materi')
+@section('content_title','Data Materi')
 
 @push('css')
     <!-- Custom styles for dataTables -->
@@ -12,8 +12,8 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            {{-- <h6 class="m-0 font-weight-bold text-primary">Data Kelas</h6> --}}
-                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="fas fa-plus fa-fw"></i> Tambah Data Kategori</a>
+                            {{-- <h6 class="m-0 font-weight-bold text-primary">Data Materi</h6> --}}
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="fas fa-plus fa-fw"></i> Tambah Data Materi</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

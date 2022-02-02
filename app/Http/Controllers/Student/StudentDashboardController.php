@@ -23,9 +23,9 @@ class StudentDashboardController extends Controller
         $orders = OrderClass::where('student_id', auth()->user()->id)->get();
         $class = Materi::all();
         $courses = Course::all();
-        foreach ($courses as $course) {   
+        foreach ($courses as $course) {
             $orderan = OrderClass::where('student_id', auth()->user()->id)->where('course_id', $course->id)->get();
-            foreach ($orderan as $order) {   
+            foreach ($orderan as $order) {
                 $kelas = Materi::where('course_id', $order->course->id)->get();
             }
         }

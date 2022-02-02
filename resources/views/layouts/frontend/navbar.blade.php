@@ -75,10 +75,10 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
                             <a href="{{ route('frontend.index') }}" class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">Home</a>
-                            <a href="{{ route('frontend.about') }}" class="nav-item nav-link {{ (request()->is('about')) ? 'active' : '' }}">About</a>
-                            <a href="{{ route('frontend.category') }}" class="nav-item nav-link {{ (request()->is('category')) ? 'active' : '' }}">Categories</a>
+                            <a href="{{ route('frontend.about') }}" class="nav-item nav-link {{ (request()->is('about')) ? 'active' : '' }}">Tentang Kami</a>
+                            <a href="{{ route('frontend.category') }}" class="nav-item nav-link {{ (request()->is('category')) ? 'active' : '' }}">Kategori</a>
                             {{-- <a href="{{ route('frontend.course') }}" class="nav-item nav-link {{ (request()->is('course')) ? 'active' : '' }}">Courses</a> --}}
-                            <a href="{{ route('frontend.teacher') }}" class="nav-item nav-link {{ (request()->is('teacher')) ? 'active' : '' }}">Teachers</a>
+                            <a href="{{ route('frontend.teacher') }}" class="nav-item nav-link {{ (request()->is('teacher')) ? 'active' : '' }}">Guru</a>
                             {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -86,7 +86,7 @@
                                     <a href="single.html" class="dropdown-item">Blog Detail</a>
                                 </div>
                             </div> --}}
-                            <a href="{{ route('frontend.contact') }}" class="nav-item nav-link {{ (request()->is('contact')) ? 'active' : '' }}">Contact</a>
+                            <a href="{{ route('frontend.contact') }}" class="nav-item nav-link {{ (request()->is('contact')) ? 'active' : '' }}">Kontak</a>
                         </div>
                         @guest
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{{ route('register') }}">Join Now</a>

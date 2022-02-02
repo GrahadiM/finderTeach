@@ -13,7 +13,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             {{-- <h6 class="m-0 font-weight-bold text-primary">Data Riwayat Prestasi</h6> --}}
-                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="fas fa-plus fa-fw"></i> Tambah Data Kategori</a>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create"><i class="fas fa-plus fa-fw"></i> Tambah Data Prestasi</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
