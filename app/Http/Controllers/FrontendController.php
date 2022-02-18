@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\OrderClass;
+use App\Models\RiwayatPrestasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,6 +74,13 @@ class FrontendController extends Controller
         $category = Category::where('id', $id)->get();
         $teachers = User::where('role', 'teacher')->orderBy('name', 'asc')->get();
         return view('frontend.teacherId', compact('teachers', 'classrooms', 'category'));
+    }
+
+    public function prestasi($id)
+    {
+        $teacher = User::find($id);
+        $key = RiwayatPrestasi::where('teacher_id', $id)->get();
+        return view('frontend.prestasi', compact('teacher', 'key'));
     }
 
     public function contact()

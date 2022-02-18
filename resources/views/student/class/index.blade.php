@@ -21,10 +21,12 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Judul</th>
+                                            <th>Nama Guru</th>
                                             {{-- <th>Materi File</th> --}}
                                             <th>Materi Gambar</th>
                                             <th>Materi Tertulis</th>
                                             <th>Tgl Upload</th>
+                                            <th>Hubungi Guru</th>
                                             {{-- <th>Handle</th> --}}
                                         </tr>
                                     </thead>
@@ -32,10 +34,12 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Judul</th>
+                                            <th>Nama Guru</th>
                                             {{-- <th>Materi File</th> --}}
                                             <th>Materi Gambar</th>
                                             <th>Materi Tertulis</th>
                                             <th>Tgl Upload</th>
+                                            <th>Hubungi Guru</th>
                                             {{-- <th>Handle</th> --}}
                                         </tr>
                                     </tfoot>
@@ -48,6 +52,7 @@
                                                             <tr>
                                                                 <td>{{ $loop->iteration }}</td>
                                                                 <td>{{ $data->course->name }}</td>
+                                                                <td>{{ $data->course->teacher->name }}</td>
                                                                 <td>
                                                                     <a href="{{ asset('images/materi_gambar/'.$data->materi_gambar) }}" target="_blank" rel="noopener noreferrer">
                                                                         <img src="{{ asset('images/materi_gambar/'.$data->materi_gambar) }}" alt="materi" width="100px">
@@ -57,9 +62,12 @@
                                                                 <td>{{ $data->materi_video }}</td> --}}
                                                                 <td>{{ $data->materi_text }}</td>
                                                                 <td>{{ \Carbon\Carbon::parse($data->create_at)->translatedFormat('l, j F Y') }}</td>
-                                                                {{-- <td>
-                                                                    <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a>
-                                                                </td> --}}
+                                                                <td>
+                                                                    @if ($data->course->teacher->phone != null)
+                                                                    <a href="https://wa.me/{{ $data->course->teacher->phone }}" target="_blank" class="btn btn-sm btn-success mb-1"><i class="fab fa-whatsapp"></i></a>
+                                                                    @endif
+                                                                    {{-- <a href="#" data-toggle='modal' data-target='#show{{ $data->id }}' class="btn btn-sm btn-info mb-1"><i class="fas fa-search"></i></a> --}}
+                                                                </td>
                                                             </tr>
 
                                                             <!-- form view -->

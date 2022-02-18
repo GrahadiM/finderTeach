@@ -11,6 +11,7 @@ Route::get('/course', [App\Http\Controllers\FrontendController::class, 'course']
 Route::get('/course/{id}', [App\Http\Controllers\FrontendController::class, 'courseId'])->name('frontend.courseId');
 Route::get('/course/teacher/{id}', [App\Http\Controllers\FrontendController::class, 'courseTeacherId'])->name('frontend.courseTeacherId');
 Route::get('/teacher', [App\Http\Controllers\FrontendController::class, 'teacher'])->name('frontend.teacher');
+Route::get('/prestasi/{id}', [App\Http\Controllers\FrontendController::class, 'prestasi'])->name('frontend.prestasi');
 Route::get('/teacher/{id}', [App\Http\Controllers\FrontendController::class, 'teacherId'])->name('frontend.teacherId');
 Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact'])->name('frontend.contact');
 
@@ -29,8 +30,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
         Route::resource('admin-dashboard', App\Http\Controllers\Admin\DashboardController::class);
-        Route::resource('admin-student', App\Http\Controllers\Admin\StudentController::class);
+        Route::resource('admin-category', App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('admin-order', App\Http\Controllers\Admin\OrderClassController::class);
         Route::resource('admin-teacher', App\Http\Controllers\Admin\TeacherController::class);
+        Route::resource('admin-student', App\Http\Controllers\Admin\StudentController::class);
         Route::resource('admin-website', App\Http\Controllers\Admin\WebsiteController::class);
     });
     
@@ -42,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('teacher-category', App\Http\Controllers\Teacher\CategoryController::class);
             Route::resource('teacher-course', App\Http\Controllers\Teacher\CourseController::class);
             Route::resource('teacher-class', App\Http\Controllers\Teacher\MateriController::class);
-            Route::resource('teacher-order', App\Http\Controllers\Teacher\OrderClass::class);
+            Route::resource('teacher-order', App\Http\Controllers\Teacher\OrderClassController::class);
             Route::resource('teacher-riwayat', App\Http\Controllers\Teacher\RiwayatController::class);
             Route::resource('teacher-perestasi', App\Http\Controllers\Teacher\PerestasiController::class);
         });
@@ -57,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            redirect('/');
+            redirect()->route('frontend.index');
         });
     });
 });

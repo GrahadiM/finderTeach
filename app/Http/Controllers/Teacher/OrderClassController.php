@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderClass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class StudentController extends Controller
+class OrderClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $key = \App\Models\User::orderBy('name', 'asc')
-        ->where('role', 'student')
-        ->get();
-        
-        return view('admin.user.student', compact('key'));
+        // $key = OrderClass::where('teacher_id', Auth::user()->id)->get();
+        $key = OrderClass::all();
+        return view('teacher.order.index', compact('key'));
     }
 
     /**
@@ -73,22 +73,12 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'name' => 'required|string',        
-        // ]);
-        if ($request->status != null) {
-            $attr['status'] = $request->status;
-            // dd($attr);
-            \App\Models\User::findOrFail($id)->update($attr);
-        }
-        if ($request->status == null) {
-            $attr['name'] = $request->name;
-            $attr['email'] = $request->email;
-            $attr['phone'] = $request->phone;
-            $attr['address'] = $request->address;
-            // dd($attr);
-            \App\Models\User::findOrFail($id)->update($attr);
-        }
+        $request->validate([
+            'status' => 'required',
+        ]);
+        OrderClass::findOrFail($id)->update([
+            'status' => $request->status,
+        ]);
         return back()->with('success', 'Data di ubah!');
     }
 
@@ -100,7 +90,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        \App\Models\User::findOrFail($id)->delete();
-        return back()->with('success', 'Data di hapus!');
+        //
     }
 }

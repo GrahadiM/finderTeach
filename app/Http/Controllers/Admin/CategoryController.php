@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $key = \App\Models\User::orderBy('name', 'asc')
-        ->where('role', 'student')
-        ->get();
-        
-        return view('admin.user.student', compact('key'));
+        $key = Category::all();
+        return view('admin.category.index', compact('key'));
     }
 
     /**
@@ -39,7 +37,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string',],
+        ]);
+        Category::create([
+            'name' => $request->name,
+            'thumbnail' => 'cat-3.jpg',
+        ]);
+        return back()->with('success', 'Data di tambah!');
     }
 
     /**
@@ -73,22 +78,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'name' => 'required|string',        
-        // ]);
-        if ($request->status != null) {
-            $attr['status'] = $request->status;
-            // dd($attr);
-            \App\Models\User::findOrFail($id)->update($attr);
-        }
-        if ($request->status == null) {
-            $attr['name'] = $request->name;
-            $attr['email'] = $request->email;
-            $attr['phone'] = $request->phone;
-            $attr['address'] = $request->address;
-            // dd($attr);
-            \App\Models\User::findOrFail($id)->update($attr);
-        }
+        $this->validate($request, [
+            'name' => 'required|string',        
+        ]);
+        $attr = $request->only(['name']);
+        // dd($attr);
+        $find = Category::findOrFail($id);
+        $find->update($attr);
         return back()->with('success', 'Data di ubah!');
     }
 
@@ -100,7 +96,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        \App\Models\User::findOrFail($id)->delete();
+        Category::findOrFail($id)->delete();
         return back()->with('success', 'Data di hapus!');
     }
 }

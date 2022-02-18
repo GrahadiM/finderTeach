@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\OrderClass as ModelsOrderClass;
+use App\Models\OrderClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OrderClass extends Controller
+class OrderClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class OrderClass extends Controller
      */
     public function index()
     {
-        // $key = ModelsOrderClass::where('teacher_id', Auth::user()->id)->get();
-        $key = ModelsOrderClass::all();
-        return view('teacher.order.index', compact('key'));
+        // $key = OrderClass::where('teacher_id', Auth::user()->id)->get();
+        $key = OrderClass::all();
+        return view('admin.order.index', compact('key'));
     }
 
     /**
@@ -76,7 +76,7 @@ class OrderClass extends Controller
         $request->validate([
             'status' => 'required',
         ]);
-        ModelsOrderClass::findOrFail($id)->update([
+        OrderClass::findOrFail($id)->update([
             'status' => $request->status,
         ]);
         return back()->with('success', 'Data di ubah!');

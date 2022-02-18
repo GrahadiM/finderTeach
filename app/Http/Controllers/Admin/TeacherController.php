@@ -54,7 +54,7 @@ class TeacherController extends Controller
             'status' => $request->status,
             'phone' => $request->phone,
             'address' => $request->address,
-            'avatar' => 'teacher.png',
+            // 'avatar' => 'teacher.png',
             // 'remember_token' => Str::random(60),
         ]);
 
@@ -92,7 +92,23 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate($request, [
+        //     'name' => 'required|string',        
+        // ]);
+        if ($request->status != null) {
+            $attr['status'] = $request->status;
+            // dd($attr);
+            \App\Models\User::findOrFail($id)->update($attr);
+        }
+        if ($request->status == null) {
+            $attr['name'] = $request->name;
+            $attr['email'] = $request->email;
+            $attr['phone'] = $request->phone;
+            $attr['address'] = $request->address;
+            // dd($attr);
+            \App\Models\User::findOrFail($id)->update($attr);
+        }
+        return back()->with('success', 'Data di ubah!');
     }
 
     /**
@@ -103,6 +119,7 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Models\User::findOrFail($id)->delete();
+        return back()->with('success', 'Data di hapus!');
     }
 }

@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $key = Category::all();
-        
         return view('teacher.category.index', compact('key'));
     }
 

@@ -33,6 +33,20 @@
             Data Website
         </div>
 
+        <li class="nav-item {{ Request::is('admin-category*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin-category.index') }}">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>Data Kategori</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Request::is('admin-order*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin-order.index') }}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Data Pesanan</span>
+            </a>
+        </li>
+
         <li class="nav-item {{ Request::is('admin-teacher*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin-teacher.index') }}">
                 <i class="fas fa-fw fa-users-cog"></i>
@@ -89,12 +103,12 @@
             Data Guru
         </div>
 
-        <li class="nav-item {{ Request::is('teacher-category*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('teacher-category*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('teacher-category.index') }}">
                 <i class="fas fa-fw fa-list-alt"></i>
                 <span>Data Kategori</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item {{ Request::is('teacher-course*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('teacher-course.index') }}">

@@ -19,7 +19,7 @@ class MateriController extends Controller
     {
         $key = Materi::all();
         $courses = Course::all();
-        $orders = OrderClass::where('student_id', auth()->user()->id)->get();
+        $orders = OrderClass::where('student_id', auth()->user()->id)->where('status','active')->get();
         return view('student.class.index', compact('key', 'courses', 'orders'));
     }
 

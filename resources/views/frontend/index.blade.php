@@ -50,15 +50,15 @@
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Top Categories</h5>
-                <h1>Explore Category</h1>
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Daftar Kategori</h5>
+                <h1>Pilih Kategori</h1>
             </div>
             <div class="row">
                 @foreach ($categories as $category)
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
                         <img class="img-fluid" src="{{ asset('images/categories') }}/{{ $category->thumbnail }}" alt="thumbnail">
-                        <a class="cat-overlay text-white text-decoration-none" href="{{ route('frontend.teacherId', $category->id) }}">
+                        <a class="cat-overlay text-white text-decoration-none" href="{{ route('frontend.courseId', $category->id) }}">
                             <h4 class="text-white font-weight-medium">{{ $category->name }}</h4>
                             {{-- <span>
                                 @foreach ($classrooms as $course)
@@ -76,7 +76,7 @@
             </div>
             <div class="text-center mt-5">
                 <a class="text-decoration-none" href="{{ route('frontend.category') }}">
-                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">SEE ALL</h5>
+                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Lihat Semua</h5>
                 </a>
             </div>
         </div>
@@ -259,8 +259,8 @@
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Teachers</h5>
-                <h1>Meet Our Teachers</h1>
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Daftar Guru</h5>
+                <h1>Pilih Guru Anda</h1>
             </div>
             <div class="row">
                 @foreach ($teachers as $teacher)
@@ -269,7 +269,8 @@
                         <div class="team-img position-relative">
                             <img class="img-fluid" src="{{ asset('images/avatar') }}/{{ $teacher->avatar }}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-outline-light btn-square mx-1" href="{{ route('frontend.pesan', $teacher->id) }}"><i class="fas fa-address-card"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="{{ route('frontend.courseTeacherId', $teacher->id) }}"><i class="fas fa-address-card"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="{{ route('frontend.prestasi', $teacher->id) }}"><i class="fas fa-address-book"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="https://api.whatsapp.com/send?phone={{ $teacher->phone }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                 {{-- <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -288,7 +289,7 @@
             </div>
             <div class="text-center mt-5">
                 <a class="text-decoration-none" href="{{ route('frontend.teacher') }}">
-                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">SEE ALL</h5>
+                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Lihat Semua</h5>
                 </a>
             </div>
         </div>
