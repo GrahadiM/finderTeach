@@ -27,13 +27,46 @@ class CourseSeeder extends Seeder
         ]);
 
         \App\Models\Course::create([
-            'teacher_id' => 2,
+            'teacher_id' => 3,
             'category_id' => 1,
             'name' => 'Trigonometri',
-            'day' => 'Jumat',
+            'day' => 'Sabtu, Minggu',
             'time_start' => '13:00:00',
             'time_end' => '14:00:00',
             'price' => 50000,
+            'status' => 'active',
+        ]);
+
+        \App\Models\Course::create([
+            'teacher_id' => 4,
+            'category_id' => 2,
+            'name' => 'English Class Basic for Beginners',
+            'day' => 'Sabtu, Minggu',
+            'time_start' => '13:00:00',
+            'time_end' => '14:00:00',
+            'price' => 150000,
+            'status' => 'active',
+        ]);
+
+        \App\Models\Course::create([
+            'teacher_id' => 3,
+            'category_id' => 3,
+            'name' => 'Belajar Sastra Indonesia',
+            'day' => 'Sabtu, Minggu',
+            'time_start' => '13:00:00',
+            'time_end' => '14:00:00',
+            'price' => 80000,
+            'status' => 'active',
+        ]);
+
+        \App\Models\Course::create([
+            'teacher_id' => 3,
+            'category_id' => 3,
+            'name' => 'Belajar membuat Puisi untuk Pemula',
+            'day' => 'Sabtu, Minggu',
+            'time_start' => '13:00:00',
+            'time_end' => '14:00:00',
+            'price' => 80000,
             'status' => 'active',
         ]);
     }

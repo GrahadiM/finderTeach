@@ -27,9 +27,5 @@ class CategorySeeder extends Seeder
             'name' => 'Bahasa Indonesia',
             'thumbnail' => 'cat-3.jpg',
         ]);
-        \App\Models\Category::create([
-            'name' => 'Fisika',
-            'thumbnail' => 'cat-3.jpg',
-        ]);
     }
 }
