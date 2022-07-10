@@ -1,5 +1,5 @@
 @extends('layouts.frontend.subindex')
-@section('title', 'Teachers')
+@section('title', 'Guru')
 
 @section('content')
 

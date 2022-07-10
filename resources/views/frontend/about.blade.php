@@ -1,5 +1,5 @@
 @extends('layouts.frontend.subindex')
-@section('title', 'About')
+@section('title', 'Tentang Kami')
 
 @section('content')
 
@@ -12,15 +12,15 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="text-left mb-4">
-                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
-                        <h1>Innovative Way To Learn</h1>
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Tentang Kami</h5>
+                        <h1>Inovatif Baru Untuk Belajar</h1>
                     </div>
                     <p>
-                        ECOURSES is an online learning website that provides the best and largest tutoring service in Indonesia, which will assist students in solving learning problems.
+                        ECOURSES adalah situs web pembelajaran online yang menyediakan layanan bimbingan belajar terbaik dan terbesar di Indonesia, yang akan membantu siswa dalam memecahkan masalah belajar.
                     </p><p>
-                        With the ECOURSES online tutoring website, it will be easier for you to understand a variety of subject matter and can be accessed anytime and anywhere. Until now, 75% of the total students in Indonesia have trusted ECOURSES as the best learning solution.
+                        Dengan adanya website bimbingan belajar online ECOURSES akan memudahkan Anda dalam memahami berbagai materi pelajaran dan dapat diakses kapan saja dan dimana saja. Hingga saat ini, 75% dari total siswa di Indonesia telah mempercayai ECOURSES sebagai solusi pembelajaran terbaik.
                     </p><p>
-                        Focusing on improving the quality of Indonesian education holistically, this online tutoring website also has a big vision in providing educational services and learning materials from the best teachers in Indonesia, which are easily accessible to all students wherever they are at an affordable cost.
+                        Berfokus pada peningkatan kualitas pendidikan Indonesia secara holistik, website bimbingan belajar online ini juga memiliki visi besar dalam memberikan layanan pendidikan dan materi pembelajaran dari guru-guru terbaik di Indonesia, yang mudah diakses oleh semua siswa dimanapun mereka berada dengan biaya yang terjangkau.
                     </p>
                     {{-- <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a> --}}
                 </div>

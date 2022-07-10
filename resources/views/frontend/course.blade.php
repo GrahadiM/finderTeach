@@ -1,5 +1,5 @@
 @extends('layouts.frontend.subindex')
-@section('title', 'Courses')
+@section('title', 'Kelas')
 
 @section('content')
 
@@ -7,8 +7,8 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Courses</h5>
-                <h1>Our Popular Courses</h1>
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Daftar Kelas</h5>
+                <h1>Kelas Terpopuler</h1>
             </div>
             <div class="row">
                 @foreach ($classrooms as $item)

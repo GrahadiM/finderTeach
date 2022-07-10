@@ -18,7 +18,7 @@ Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/pesan/{id}', [App\Http\Controllers\FrontendController::class, 'pesan'])->name('frontend.pesan');
     Route::post('/pesan', [App\Http\Controllers\FrontendController::class, 'pesanpost'])->name('frontend.pesan.post');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('admin-student', App\Http\Controllers\Admin\StudentController::class);
         Route::resource('admin-website', App\Http\Controllers\Admin\WebsiteController::class);
     });
-    
+
     Route::middleware(['status'])->group(function () {
 
         Route::middleware(['teacher'])->group(function () {
@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('teacher-riwayat', App\Http\Controllers\Teacher\RiwayatController::class);
             Route::resource('teacher-perestasi', App\Http\Controllers\Teacher\PerestasiController::class);
         });
-        
+
         Route::middleware(['student'])->group(function () {
             Route::resource('student-dashboard', App\Http\Controllers\Student\StudentDashboardController::class);
             Route::resource('student-order', App\Http\Controllers\Student\OrderClass::class);

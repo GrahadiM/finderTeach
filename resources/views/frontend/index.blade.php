@@ -1,7 +1,7 @@
 @extends('layouts.frontend.index')
 
 @section('content')
-    
+
     <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5 mb-5">
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -15,9 +15,9 @@
                     <img class="position-relative w-100" src="{{ asset('frontend') }}/img/carousel-1.jpg" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                            <h1 class="display-3 text-white mb-md-4">Best Education From Your Home</h1>
-                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                            <h5 class="text-white text-uppercase mb-md-3">Kursus Online Terbaik</h5>
+                            <h1 class="display-3 text-white mb-md-4">Pendidikan Terbaik Dari Rumah Anda</h1>
+                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Baca selengkapnya..</a>
                         </div>
                     </div>
                 </div>
@@ -25,9 +25,9 @@
                     <img class="position-relative w-100" src="{{ asset('frontend') }}/img/carousel-2.jpg" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                            <h1 class="display-3 text-white mb-md-4">Best Online Learning Platform</h1>
-                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                            <h5 class="text-white text-uppercase mb-md-3">Kursus Online Terbaik</h5>
+                            <h1 class="display-3 text-white mb-md-4">Platform Pembelajaran Online Terbaik</h1>
+                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Baca selengkapnya..</a>
                         </div>
                     </div>
                 </div>
@@ -35,9 +35,9 @@
                     <img class="position-relative w-100" src="{{ asset('frontend') }}/img/carousel-3.jpg" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                            <h1 class="display-3 text-white mb-md-4">New Way To Learn From Home</h1>
-                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                            <h5 class="text-white text-uppercase mb-md-3">Kursus Online Terbaik</h5>
+                            <h1 class="display-3 text-white mb-md-4">Cara Baru Belajar Dari Rumah</h1>
+                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Baca selengkapnya..</a>
                         </div>
                     </div>
                 </div>

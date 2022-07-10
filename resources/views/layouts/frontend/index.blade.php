@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ \Setting::getSetting()->title_web }} - Online Courses HTML Template</title>
+    <title>{{ \Setting::getSetting()->title_web }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -13,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
             <div class="col-lg-7 col-md-12">
                 <div class="row">
                     <div class="col-md-6 mb-5">
-                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Info Kontak</h5>
                         <p><i class="fa fa-map-marker-alt mr-2"></i>{{ \Setting::getSetting()->address }}</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>{{ \Setting::getSetting()->phone }}</p>
                         <p><i class="fa fa-envelope mr-2"></i>{{ \Setting::getSetting()->mail }}</p>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-5">
-                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Our Courses</h5>
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Kursus kami</h5>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
                             <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
@@ -61,8 +61,6 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-12 mb-5">
-                <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Newsletter</h5>
-                <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu kasd sed ea duo ipsum. Dolor duo eirmod sea justo no lorem est diam</p>
                 <div class="w-100">
                     <div class="input-group">
                         <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">

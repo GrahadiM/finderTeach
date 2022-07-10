@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(60),
             'email_verified_at' => '2021-12-01 00:00:00',
         ]);
-        
+
         // Teacher
         \App\Models\User::create([
             'name' => 'Guru',

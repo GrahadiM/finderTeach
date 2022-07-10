@@ -11,7 +11,7 @@
                 <div class="d-inline-flex align-items-center">
                     <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
                     <div class="text-left">
-                        <h6 class="font-weight-semi-bold mb-1">Our Office</h6>
+                        <h6 class="font-weight-semi-bold mb-1">Kantor Kami</h6>
                         <small>{{ \Setting::getSetting()->address }}</small>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="d-inline-flex align-items-center">
                     <i class="fa fa-2x fa-envelope text-primary mr-3"></i>
                     <div class="text-left">
-                        <h6 class="font-weight-semi-bold mb-1">Email Us</h6>
+                        <h6 class="font-weight-semi-bold mb-1">Email Kami</h6>
                         <small>{{ \Setting::getSetting()->mail }}</small>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="d-inline-flex align-items-center">
                     <i class="fa fa-2x fa-phone text-primary mr-3"></i>
                     <div class="text-left">
-                        <h6 class="font-weight-semi-bold mb-1">Call Us</h6>
+                        <h6 class="font-weight-semi-bold mb-1">Hubungi Kami</h6>
                         <small>{{ \Setting::getSetting()->phone }}</small>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                             <a href="{{ route('frontend.contact') }}" class="nav-item nav-link {{ (request()->is('contact')) ? 'active' : '' }}">Kontak</a>
                         </div>
                         @guest
-                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{{ route('register') }}">Join Now</a>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{{ route('register') }}">Bergabung Sekarang</a>
                         @endguest
                         @auth
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{{ route('home') }}">Dashboard</a>
